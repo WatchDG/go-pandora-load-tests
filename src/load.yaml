@@ -1,0 +1,20 @@
+pools:
+  - id: httpPool
+    gun:
+      type: httpGun
+    ammo:
+      type: httpAmmo
+      source:
+        type: file
+        path: json.ammo
+    result:
+      type: phout
+      destination: phout.log
+    rps-per-instance: false
+    rps:
+      type: const
+      ops: 100000
+      duration: 30s
+    startup:
+      type: once
+      times: 100
